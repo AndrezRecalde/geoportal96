@@ -49,6 +49,9 @@ class HomeController extends Controller
         if($request->obra_id ?? false){
           $datos["proyectos"] = $datos["proyectos"]->where('id_obra',$request->obra_id);
       }
+      if($request->estado_id ?? false){
+        $datos["proyectos"] = $datos["proyectos"]->where('id_estado',$request->estado_id);
+    }
         if($request->comunidad_id ?? false){
             $datos["proyectos"] = $datos["proyectos"]->where('id_comunidad',$request->comunidad_id);
         }

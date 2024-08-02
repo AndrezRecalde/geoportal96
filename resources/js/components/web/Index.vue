@@ -67,6 +67,17 @@
             dense
           ></v-select>
 
+          <v-select
+            outlined
+            v-model="input.estado_id"
+            required
+            :items="itemsEstado"
+            item-text="estado"
+            item-value="id"
+            label="Estado"
+            dense
+          ></v-select>
+
           <v-text-field
             label="Nombre del proyecto"
             v-model="input.proyecto"
@@ -298,12 +309,14 @@ export default {
         recinto_id: null,
         parroquia_id: null,
         obra_id: null,
+        estado_id: null,
         proyecto: null,
       },
       itemsCanton: [],
       itemsRecinto: [],
       itemsParroquia: [],
       itemsObra: [],
+      itemsEstado: [],
       itemsProyectos: [],
       arrmarkers: [],
       chartModalTotalProyectosAgrupado: [],
@@ -312,6 +325,7 @@ export default {
         cargarParroquias: "/cargarparroquias",
         cargarRecintos: "/cargarrecintos",
         cargarObras: "/cargarobras",
+        cargarEstados: "/cargarestados",
         cargarProyectos: "/cargarproyectos",
       },
       validations: {},
@@ -321,6 +335,7 @@ export default {
   created() {
     this.cargarFiltros();
     this.cargarFiltroObra();
+    this.cargarEstados();
   },
   mounted() {
     self = this;
@@ -390,6 +405,20 @@ export default {
             /* console.log(data) */
             this.itemsObra = data.data.obras;
             this.itemsObra.unshift({ id: null, obra: "TODOS" });
+          }
+        })
+        .catch((errors) => {});
+    },
+
+    cargarEstados() {
+      axios
+        .get(this.urls.cargarEstados)
+        .then((response) => {
+          var data = response.data;
+          console.log("data.estado", data.estado);
+          if (data.estado == "success") {
+            this.itemsEstado = data.data.estados;
+            // this.itemsCanton.unshift({ id: null, nombre: "TODOS" });
           }
         })
         .catch((errors) => {});

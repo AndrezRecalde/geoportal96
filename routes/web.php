@@ -23,6 +23,7 @@ Route::group([
     Route::post('/cargarrecintos', [App\Http\Controllers\Web\HomeController::class, 'cargarRecintos']);
     Route::post('/cargarobras', [App\Http\Controllers\Web\HomeController::class, 'cargarObras']);
     Route::post('/cargarproyectos', [App\Http\Controllers\Web\HomeController::class, 'cargarProyectos']);
+    Route::get('/cargarestados', [App\Http\Controllers\Dashboard\ProyectoController::class, 'cargarEstados']);
 });
 
 //RUTAS DASHBOARD
