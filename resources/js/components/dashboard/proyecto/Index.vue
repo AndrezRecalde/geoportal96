@@ -467,7 +467,7 @@ export default {
           console.log("data.estado", data.estado);
           if (data.estado == "success") {
             this.itemsEstado = data.data.estados;
-            // this.itemsCanton.unshift({ id: null, nombre: "TODOS" });
+            this.itemsCanton.unshift({ id: null, nombre: "TODOS" });
           }
         })
         .catch((errors) => {});

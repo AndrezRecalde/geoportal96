@@ -415,10 +415,10 @@ export default {
         .get(this.urls.cargarEstados)
         .then((response) => {
           var data = response.data;
-          console.log("data.estado", data.estado);
+          //console.log("data.estado", data.estado);
           if (data.estado == "success") {
             this.itemsEstado = data.data.estados;
-            // this.itemsCanton.unshift({ id: null, nombre: "TODOS" });
+            this.itemsEstado.unshift({ id: null, estado: "TODOS" });
           }
         })
         .catch((errors) => {});
